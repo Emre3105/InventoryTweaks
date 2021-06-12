@@ -1,33 +1,44 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.layout')
 
-        <title>InventoryTweaks</title>
+@section('titreItem')
+    <h1>Tous les employés</h1>
+@endsection
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
-        </style>
-    </head>
-    <body>
-        <table class="table table-bordered table-striped">
+@section('contenu')
+        <table class="table table-hover">
             <thead>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Prenom</th>
+                <th scope="col">Id</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prenom</th>
             </thead>
-            @foreach($employes as $employe)
-                <tr>
-                    <td> {{ $employe->id }} </td>
-                    <td> {{ $employe->nom }} </td>
-                    <td> {{ $employe->prenom }} </td>
-                </tr>
-            @endforeach
+            <tbody>
+                <?php
+                $i = 1;
+                foreach($employes as $employe)
+                {
+                    if($i%2 == 1)
+                    {
+                        ?>
+                        <tr class="table-active">
+                            <td> <?=$employe->id?> </td>
+                            <td> <?=$employe->nom?> </td>
+                            <td> <?=$employe->prenom?> </td>
+                        </tr>
+                        <?php
+                    }
+                    else
+                    {
+                        ?>
+                        <tr>
+                            <td> <?=$employe->id?> </td>
+                            <td> <?=$employe->nom?> </td>
+                            <td> <?=$employe->prenom?> </td>
+                        </tr>
+                        <?php
+                    }
+                    $i = $i+1;
+                }
+                ?>
+            </tbody>
         </table>
-    </body>
-</html>
+@endsection
