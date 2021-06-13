@@ -22,9 +22,15 @@
 
             <div class="navbar-collapse collapse show" id="navbarColor01" style="">
                 <ul class="navbar-nav mr-auto">
+                @auth
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Accueil</a>
+                        <a class="nav-link" href="{{ url('/') }}">Accueil</a>
                     </li>
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('login') }}">Login</a>
+                    </li>
+                @endauth
                 </ul>
             </div>
         </nav>

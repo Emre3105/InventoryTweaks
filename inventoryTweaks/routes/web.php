@@ -14,8 +14,12 @@ use App\Http\Controllers\EmployeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [EmployeController::class, '__invoke']);
 
-Route::get('employes',[EmployeController::class, 'index']);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+Route::get('employes',EmployeController::class);
+
+require __DIR__.'/auth.php';

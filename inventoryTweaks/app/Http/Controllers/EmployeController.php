@@ -12,12 +12,17 @@ class EmployeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function __invoke()
     {
         $employe = new Employe();
         $employes = $employe->getAll();
         return view('index', compact('employes'));
     }
+
+    /*public function __invoke(Request $request)
+    {
+        return "Welcome to our homepage";
+    }*/
 
     /**
      * Show the form for creating a new resource.
