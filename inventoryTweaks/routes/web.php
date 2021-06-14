@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeController;
+use App\Http\Controllers\AccueilController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +15,36 @@ use App\Http\Controllers\EmployeController;
 |
 */
 
-Route::get('/', [EmployeController::class, '__invoke']);
+//Route::get('/', [EmployeController::class, '__invoke']);
+
+//Route::get('accueil', [AccueilController::class, '__invoke']);
+
+//Route::get('deposer', [AccueilController::class, '__invoke']);
+
+//Route::get('retirer', [AccueilController::class, '__invoke']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::get('/', function () {
+    return view('accueil');
+})->middleware(['auth'])->name('/');
+
+Route::get('/accueil', function () {
+    return view('accueil');
+})->middleware(['auth'])->name('accueil');
+
+Route::get('/categorieDeposer', function () {
+    return view('categorie', ['action' => 'deposer']);
+})->middleware(['auth'])->name('categorieDeposer');
+
+Route::get('/categorie/deposer', [CategorieController::class])->name("categorie_deposer");
+Route::get('/categorie/retirer', [CategorieController::class])->name("categorie_retirer");
+
+Route::get('/categorieRetirer', function () {
+    return view('categorie', ['action' => 'retirer']);
+})->middleware(['auth'])->name('categorieRetirer');
 
 Route::get('employes',EmployeController::class);
 

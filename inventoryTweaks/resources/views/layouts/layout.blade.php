@@ -26,9 +26,20 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/') }}">Accueil</a>
                     </li>
+                    <li class="nav-item">
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <x-dropdown-link :href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();" class="nav-link">
+                                {{ __('Log Out') }}
+                            </x-dropdown-link>
+                        </form>
+                    </li>
                 @else
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('login') }}">Login</a>
+                        <a class="nav-link" href="{{ url('login') }}">Connexion</a>
                     </li>
                 @endauth
                 </ul>
