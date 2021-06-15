@@ -14,7 +14,15 @@ class CategorieController extends Controller
      */
     public function __invoke()
     {
-        return view('categorie');
+        if($action == "deposer")
+        {
+            return view('categorieDeposer');
+        }
+        if($action == "retirer")
+        {
+            return view('categorieRetirer');
+        }
+        return view('accueil');
     }
 
     public function categorie_deposer()

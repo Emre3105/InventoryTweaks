@@ -14,11 +14,21 @@ class OutilController extends Controller
      */
     public function __invoke()
     {
-        return view('outil');
+        return view('categorie');
     }
 
     public function getAction($action)
     {
         print("on est dans le controller, on recoit l'action ".$action);
+    }
+
+    public function outil_deposer()
+    {
+        print("deposer");
+    }
+
+    public function outil_retirer()
+    {
+        print("retirer");
     }
 }

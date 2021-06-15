@@ -24,10 +24,10 @@
                 <ul class="navbar-nav mr-auto">
                 @auth
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/') }}">Accueil</a>
+                        <a class="nav-link" href="{{ url('/accueil') }}">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <form method="POST" action="{{ route('logout') }}">
+                        <form method="POST" action="{{ url('logout') }}">
                             @csrf
 
                             <x-dropdown-link :href="route('logout')"

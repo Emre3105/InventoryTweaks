@@ -36,21 +36,68 @@ Route::get('/accueil', function () {
     return view('accueil');
 })->middleware(['auth'])->name('accueil');
 
-Route::get('/categorieDeposer', function () {
+/*Route::get('/categorieDeposer', function () {
     return view('categorie', ['action' => 'deposer']);
+})->middleware(['auth'])->name('categorieDeposer');*/
+
+//Route::get('/categorieDeposer', [CategorieController::class])->middleware(['auth'])->name("categorie_deposer");
+//Route::get('/categorieRetirer', [CategorieController::class])->middleware(['auth'])->name("categorie_retirer");
+
+Route::get('/categorieDeposer', function () {
+    return view('categorieDeposer');
 })->middleware(['auth'])->name('categorieDeposer');
 
-Route::get('/categorie/deposer', [CategorieController::class])->name("categorie_deposer");
-Route::get('/categorie/retirer', [CategorieController::class])->name("categorie_retirer");
-
 Route::get('/categorieRetirer', function () {
-    return view('categorie', ['action' => 'retirer']);
+    return view('categorieRetirer');
 })->middleware(['auth'])->name('categorieRetirer');
 
-Route::get('/outil/{action}',[
+/*Route::get('/categorieRetirer', function () {
+    return view('categorie', ['action' => 'retirer']);
+})->middleware(['auth'])->name('categorieRetirer');*/
+
+/*Route::get('/outil/{action}',[
     'uses' => 'OutilController@getAction',
     'as'   => 'outil'
-])->middleware(['auth'])->name('outil');
+])->middleware(['auth'])->name('outil');*/
+
+//Route::get('/outil/deposer', [OutilController::class])->name("outil_deposer");
+//Route::get('/outil/retirer', [OutilController::class])->name("outil_retirer");
+
+/*Route::get('/outil', function () {
+    return view('categorie');
+})->middleware(['auth'])->name('categorieRetirer');*/
+
+Route::get('/outilRetirer', function () {
+    return view('outilRetirer');
+})->middleware(['auth'])->name('outilRetirer');
+
+Route::get('/outilDeposer', function () {
+    return view('outilDeposer');
+})->middleware(['auth'])->name('outilDeposer');
+
+Route::get('/sacRetirer', function () {
+    return view('sacRetirer');
+})->middleware(['auth'])->name('sacRetirer');
+
+Route::get('/sacDeposer', function () {
+    return view('sacDeposer');
+})->middleware(['auth'])->name('sacDeposer');
+
+Route::get('/accessoireRetirer', function () {
+    return view('accessoireRetirer');
+})->middleware(['auth'])->name('accessoireRetirer');
+
+Route::get('/accessoireDeposer', function () {
+    return view('accessoireDeposer');
+})->middleware(['auth'])->name('accessoireDeposer');
+
+Route::get('/autreRetirer', function () {
+    return view('autreRetirer');
+})->middleware(['auth'])->name('autreRetirer');
+
+Route::get('/autreDeposer', function () {
+    return view('autreDeposer');
+})->middleware(['auth'])->name('autreDeposer');
 
 Route::get('employes',EmployeController::class);
 

@@ -6,7 +6,7 @@
 
 @section('contenu')
 
-<a href="{{ route('outil', ['action'=>$action]) }}">
+@yield('aOutil')
   <div class="card border-light mb-3" style="max-width: 20rem;">
     <div class="card-body">
       <h4 class="card-title">Outil</h4>
@@ -15,7 +15,7 @@
   </div>
 </a>
 
-<a href="{{ route('accessoire.<?=$action?>') }}">
+@yield('aAccessoire')
   <div class="card border-light mb-3" style="max-width: 20rem;">
     <div class="card-body">
       <h4 class="card-title">Accessoire en acier</h4>
@@ -24,7 +24,7 @@
   </div>
 </a>
 
-<a href="{{ route('sac.<?=$action?>') }}">
+@yield('aSac')
   <div class="card border-light mb-3" style="max-width: 20rem;">
     <div class="card-body">
       <h4 class="card-title">Sac</h4>
@@ -33,7 +33,7 @@
   </div>
 </a>
 
-<a href="{{ route('autre.<?=$action?>') }}">
+@yield('aAutre')
   <div class="card border-light mb-3" style="max-width: 20rem;">
     <div class="card-body">
       <h4 class="card-title">Autre</h4>
