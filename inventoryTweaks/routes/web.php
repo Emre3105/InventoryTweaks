@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\AccueilController;
+use App\Http\Controllers\OutilController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +46,11 @@ Route::get('/categorie/retirer', [CategorieController::class])->name("categorie_
 Route::get('/categorieRetirer', function () {
     return view('categorie', ['action' => 'retirer']);
 })->middleware(['auth'])->name('categorieRetirer');
+
+Route::get('/outil/{action}',[
+    'uses' => 'OutilController@getAction',
+    'as'   => 'outil'
+])->middleware(['auth'])->name('outil');
 
 Route::get('employes',EmployeController::class);
 
