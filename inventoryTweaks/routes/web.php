@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\AccueilController;
 use App\Http\Controllers\OutilController;
+use App\Http\Controllers\CatalogueController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,15 +68,27 @@ Route::get('/categorieRetirer', function () {
     return view('categorie');
 })->middleware(['auth'])->name('categorieRetirer');*/
 
-Route::get('/outilRetirer', function () {
+/*Route::get('/outilRetirer', function () {
     return view('outilRetirer');
 })->middleware(['auth'])->name('outilRetirer');
 
 Route::get('/outilDeposer', function () {
     return view('outilDeposer');
-})->middleware(['auth'])->name('outilDeposer');
+})->middleware(['auth'])->name('outilDeposer');*/
 
-Route::get('/sacRetirer', function () {
+Route::get('/outilRetirer',CatalogueController::class)->middleware(['auth'])->name('outilRetirer');
+Route::get('/outilDeposer',CatalogueController::class)->middleware(['auth'])->name('outilDeposer');
+
+Route::get('/sacRetirer',CatalogueController::class)->middleware(['auth'])->name('sacRetirer');
+Route::get('/sacDeposer',CatalogueController::class)->middleware(['auth'])->name('sacDeposer');
+
+Route::get('/accessoireRetirer',CatalogueController::class)->middleware(['auth'])->name('accessoireRetirer');
+Route::get('/accessoireDeposer',CatalogueController::class)->middleware(['auth'])->name('accessoireDeposer');
+
+Route::get('/autreRetirer',CatalogueController::class)->middleware(['auth'])->name('autreRetirer');
+Route::get('/autreDeposer',CatalogueController::class)->middleware(['auth'])->name('autreDeposer');
+
+/*Route::get('/sacRetirer', function () {
     return view('sacRetirer');
 })->middleware(['auth'])->name('sacRetirer');
 
@@ -97,7 +110,7 @@ Route::get('/autreRetirer', function () {
 
 Route::get('/autreDeposer', function () {
     return view('autreDeposer');
-})->middleware(['auth'])->name('autreDeposer');
+})->middleware(['auth'])->name('autreDeposer');*/
 
 Route::get('employes',EmployeController::class);
 
