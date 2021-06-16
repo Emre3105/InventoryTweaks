@@ -18,12 +18,35 @@
                 <th scope="col">Marque</th>
             </thead>
             <tbody>
-                @foreach($outils as $o)
-                    <tr>
-                        <td> {{ $o->nom }} </td>
-                        <td> {{ $o->marque }} </td>
-                    </tr>
-                @endforeach
+                @if($action == "retirer")
+                    @foreach($outils as $o)
+                        <tr>
+                            <td> {{ $o->nom }} </td>
+                            <td> {{ $o->marque }} </td>
+                            <td>
+                                <form action=" {{ route('retirerOutil') }} " method="post">
+                                    @csrf
+                                    <input style="visibility : hidden; width : 1px" type="text" name="id_outil" value="<?= $o->id ?>">
+                                    <input type="submit" value="Retirer">
+                                </form> 
+                            </td>
+                        </tr>
+                    @endforeach
+                @else
+                    @foreach($outils as $o)
+                        <tr>
+                            <td> {{ $o->nom }} </td>
+                            <td> {{ $o->marque }} </td>
+                            <td>
+                                <form action=" {{ route('deposerOutil') }} " method="post">
+                                    @csrf
+                                    <input style="visibility : hidden; width : 1px" type="text" name="id_outil" value="<?= $o->id ?>">
+                                    <input type="submit" value="Déposer">
+                                </form> 
+                            </td>
+                        </tr>
+                    @endforeach
+                @endif
             </tbody>
         </table>
     @endif

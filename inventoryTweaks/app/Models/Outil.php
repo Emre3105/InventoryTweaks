@@ -32,4 +32,14 @@ class Outil extends Model
         $outils = DB::select('select * from outil where id not in (select id_materiel from casier where typeMateriel ="outil")');
         return $outils;
     }
+
+    public function deposer($id)
+    {
+        DB::update("UPDATE casier SET etat='occupe', typeMateriel='outil', id_materiel='".$id."' WHERE etat='libre' LIMIT 1");
+    }
+
+    public function retirer($id)
+    {
+        DB::update("UPDATE casier SET etat='libre', typeMateriel=null, id_materiel=null WHERE id_materiel=".$id." and typeMateriel='outil' LIMIT 1");
+    }
 }

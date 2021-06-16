@@ -18,12 +18,35 @@
                 <th scope="col">Taille</th>
             </thead>
             <tbody>
-                @foreach($autres as $a)
-                    <tr>
-                        <td> {{ $a->nom }} </td>
-                        <td> {{ $a->taille }} </td>
-                    </tr>
-                @endforeach
+                @if($action == "retirer")
+                    @foreach($autres as $a)
+                        <tr>
+                            <td> {{ $a->nom }} </td>
+                            <td> {{ $a->taille }} </td>
+                            <td>
+                                <form action=" {{ route('retirerAutre') }} " method="post">
+                                    @csrf
+                                    <input style="visibility : hidden; width : 1px" type="text" name="id_autre" value="<?= $a->id ?>">
+                                    <input type="submit" value="Retirer">
+                                </form> 
+                            </td>
+                        </tr>
+                    @endforeach
+                @else
+                    @foreach($autres as $a)
+                        <tr>
+                            <td> {{ $a->nom }} </td>
+                            <td> {{ $a->taille }} </td>
+                            <td>
+                                <form action=" {{ route('deposerAutre') }} " method="post">
+                                    @csrf
+                                    <input style="visibility : hidden; width : 1px" type="text" name="id_autre" value="<?= $a->id ?>">
+                                    <input type="submit" value="Déposer">
+                                </form> 
+                            </td>
+                        </tr>
+                    @endforeach
+                @endif
             </tbody>
         </table>
     @endif

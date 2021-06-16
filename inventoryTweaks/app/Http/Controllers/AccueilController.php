@@ -16,4 +16,9 @@ class AccueilController extends Controller
     {
         return view('accueil');
     }
+
+    public function deposerOutil($id)
+    {
+        print("je suis dans deposerOutil de accueilController, l'id recu est ".$id);
+    }
 }

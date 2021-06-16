@@ -5,6 +5,10 @@ use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\AccueilController;
 use App\Http\Controllers\OutilController;
 use App\Http\Controllers\CatalogueController;
+use App\Models\Outil;
+use App\Models\Autre;
+use App\Models\Accessoire;
+use App\Models\Sac;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,6 +91,88 @@ Route::get('/accessoireDeposer',CatalogueController::class)->middleware(['auth']
 
 Route::get('/autreRetirer',CatalogueController::class)->middleware(['auth'])->name('autreRetirer');
 Route::get('/autreDeposer',CatalogueController::class)->middleware(['auth'])->name('autreDeposer');
+
+
+
+Route::post('/deposerOutil',
+    function ()
+    {
+        $id_outil = $_POST["id_outil"];
+        $outil = new Outil();
+        $outil->deposer($id_outil);
+        return view('accueil');
+    }
+)->middleware(['auth'])->name('deposerOutil');
+
+Route::post('/retirerOutil',
+    function ()
+    {
+        $id_outil = $_POST["id_outil"];
+        $outil = new Outil();
+        $outil->retirer($id_outil);
+        return view('accueil');
+    }
+)->middleware(['auth'])->name('retirerOutil');
+
+Route::post('/deposerSac',
+    function ()
+    {
+        $id_sac = $_POST["id_sac"];
+        $sac = new Sac();
+        $sac->deposer($id_sac);
+        return view('accueil');
+    }
+)->middleware(['auth'])->name('deposerSac');
+
+Route::post('/retirerSac',
+    function ()
+    {
+        $id_sac = $_POST["id_sac"];
+        $sac = new Sac();
+        $sac->retirer($id_sac);
+        return view('accueil');
+    }
+)->middleware(['auth'])->name('retirerSac');
+
+Route::post('/deposerAutre',
+    function ()
+    {
+        $id_autre = $_POST["id_autre"];
+        $autre = new Autre();
+        $autre->deposer($id_autre);
+        return view('accueil');
+    }
+)->middleware(['auth'])->name('deposerAutre');
+
+Route::post('/retirerAutre',
+    function ()
+    {
+        $id_autre = $_POST["id_autre"];
+        $autre = new Autre();
+        $autre->retirer($id_autre);
+        return view('accueil');
+    }
+)->middleware(['auth'])->name('retirerAutre');
+
+Route::post('/deposerAccessoire',
+    function ()
+    {
+        $id_accessoire = $_POST["id_accessoire"];
+        $accessoire = new Accessoire();
+        $accessoire->deposer($id_accessoire);
+        return view('accueil');
+    }
+)->middleware(['auth'])->name('deposerAccessoire');
+
+Route::post('/retirerAccessoire',
+    function ()
+    {
+        $id_accessoire = $_POST["id_accessoire"];
+        $accessoire = new Accessoire();
+        $accessoire->retirer($id_accessoire);
+        return view('accueil');
+    }
+)->middleware(['auth'])->name('retirerAccessoire');
 
 /*Route::get('/sacRetirer', function () {
     return view('sacRetirer');

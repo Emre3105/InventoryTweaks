@@ -19,13 +19,37 @@
                 <th scope="col">Couleur</th>
             </thead>
             <tbody>
-                @foreach($accessoires as $a)
-                    <tr>
-                        <td> {{ $a->nom }} </td>
-                        <td> {{ $a->taille }} </td>
-                        <td> {{ $a->couleur }} </td>
-                    </tr>
-                @endforeach
+                @if($action == "retirer")
+                    @foreach($accessoires as $a)
+                        <tr>
+                            <td> {{ $a->nom }} </td>
+                            <td> {{ $a->taille }} </td>
+                            <td> {{ $a->couleur }} </td>
+                            <td>
+                                <form action=" {{ route('retirerAccessoire') }} " method="post">
+                                    @csrf
+                                    <input style="visibility : hidden; width : 1px" type="text" name="id_accessoire" value="<?= $a->id ?>">
+                                    <input type="submit" value="Retirer">
+                                </form> 
+                            </td>
+                        </tr>
+                    @endforeach
+                @else
+                    @foreach($accessoires as $a)
+                        <tr>
+                            <td> {{ $a->nom }} </td>
+                            <td> {{ $a->taille }} </td>
+                            <td> {{ $a->couleur }} </td>
+                            <td>
+                                <form action=" {{ route('deposerAccessoire') }} " method="post">
+                                    @csrf
+                                    <input style="visibility : hidden; width : 1px" type="text" name="id_accessoire" value="<?= $a->id ?>">
+                                    <input type="submit" value="Déposer">
+                                </form> 
+                            </td>
+                        </tr>
+                    @endforeach
+                @endif
             </tbody>
         </table>
     @endif

@@ -20,14 +20,39 @@
                 <th scope="col">Date de péremption</th>
             </thead>
             <tbody>
-                @foreach($sacs as $s)
-                    <tr>
-                        <td> {{ $s->nom }} </td>
-                        <td> {{ $s->poids }} </td>
-                        <td> {{ $s->couleur }} </td>
-                        <td> {{ $s->datePeremption }} </td>
-                    </tr>
-                @endforeach
+                @if($action == "retirer")
+                    @foreach($sacs as $s)
+                        <tr>
+                            <td> {{ $s->nom }} </td>
+                            <td> {{ $s->poids }} </td>
+                            <td> {{ $s->couleur }} </td>
+                            <td> {{ $s->datePeremption }} </td>
+                            <td>
+                                <form action=" {{ route('retirerSac') }} " method="post">
+                                    @csrf
+                                    <input style="visibility : hidden; width : 1px" type="text" name="id_sac" value="<?= $s->id ?>">
+                                    <input type="submit" value="Retirer">
+                                </form> 
+                            </td>
+                        </tr>
+                    @endforeach
+                @else
+                    @foreach($sacs as $s)
+                        <tr>
+                            <td> {{ $s->nom }} </td>
+                            <td> {{ $s->poids }} </td>
+                            <td> {{ $s->couleur }} </td>
+                            <td> {{ $s->datePeremption }} </td>
+                            <td>
+                                <form action=" {{ route('deposerSac') }} " method="post">
+                                    @csrf
+                                    <input style="visibility : hidden; width : 1px" type="text" name="id_sac" value="<?= $s->id ?>">
+                                    <input type="submit" value="Déposer">
+                                </form> 
+                            </td>
+                        </tr>
+                    @endforeach
+                @endif
             </tbody>
         </table>
     @endif
