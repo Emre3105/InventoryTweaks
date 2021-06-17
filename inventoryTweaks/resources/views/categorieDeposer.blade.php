@@ -1,17 +1,17 @@
 @extends('layouts.layoutCategorie')
 
 @section('aOutil')
-  <a href="{{ route('outilDeposer') }}">
+  <a href="{{ route('outilDeposer') }}" style="text-decoration: none">
 @endsection
 
 @section('aAccessoire')
-  <a href="{{ route('accessoireDeposer') }}">
+  <a href="{{ route('accessoireDeposer') }}" style="text-decoration: none">
 @endsection
 
 @section('aSac')
-  <a href="{{ route('sacDeposer') }}">
+  <a href="{{ route('sacDeposer') }}" style="text-decoration: none">
 @endsection
 
 @section('aAutre')
-  <a href="{{ route('autreDeposer') }}">
+  <a href="{{ route('autreDeposer') }}" style="text-decoration: none">
 @endsection

@@ -23,11 +23,11 @@
                         <tr>
                             <td> {{ $a->nom }} </td>
                             <td> {{ $a->taille }} </td>
-                            <td>
+                            <td style="width: 200px">
                                 <form action=" {{ route('retirerAutre') }} " method="post">
                                     @csrf
                                     <input style="visibility : hidden; width : 1px" type="text" name="id_autre" value="<?= $a->id ?>">
-                                    <input type="submit" value="Retirer">
+                                    <input type="submit" value="Retirer" class="btn btn-primary">
                                 </form> 
                             </td>
                         </tr>
@@ -37,11 +37,11 @@
                         <tr>
                             <td> {{ $a->nom }} </td>
                             <td> {{ $a->taille }} </td>
-                            <td>
+                            <td style="width: 200px">
                                 <form action=" {{ route('deposerAutre') }} " method="post">
                                     @csrf
                                     <input style="visibility : hidden; width : 1px" type="text" name="id_autre" value="<?= $a->id ?>">
-                                    <input type="submit" value="Déposer">
+                                    <input type="submit" value="Déposer" class="btn btn-primary">
                                 </form> 
                             </td>
                         </tr>

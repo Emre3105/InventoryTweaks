@@ -27,11 +27,11 @@
                             <td> {{ $s->poids }} </td>
                             <td> {{ $s->couleur }} </td>
                             <td> {{ $s->datePeremption }} </td>
-                            <td>
+                            <td style="width: 200px">
                                 <form action=" {{ route('retirerSac') }} " method="post">
                                     @csrf
                                     <input style="visibility : hidden; width : 1px" type="text" name="id_sac" value="<?= $s->id ?>">
-                                    <input type="submit" value="Retirer">
+                                    <input type="submit" value="Retirer" class="btn btn-primary">
                                 </form> 
                             </td>
                         </tr>
@@ -43,11 +43,11 @@
                             <td> {{ $s->poids }} </td>
                             <td> {{ $s->couleur }} </td>
                             <td> {{ $s->datePeremption }} </td>
-                            <td>
+                            <td style="width: 200px">
                                 <form action=" {{ route('deposerSac') }} " method="post">
                                     @csrf
                                     <input style="visibility : hidden; width : 1px" type="text" name="id_sac" value="<?= $s->id ?>">
-                                    <input type="submit" value="Déposer">
+                                    <input type="submit" value="Déposer" class="btn btn-primary">
                                 </form> 
                             </td>
                         </tr>
